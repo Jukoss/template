@@ -1,82 +1,59 @@
-const age = 25;
-let counter = 0;
-
-// while (counter <= 1000) {
-//   if (counter % age === 0) {
-//     console.log('Numbers - ' + counter);
-//   }
-//   counter++;
+// function argsCount() {
+//   console.log('length - ', arguments);
 // }
 
-// console.log('do ...while');
-
-// do {
-//   if (counter % age === 0) {
-//     console.log('Numbers - ' + counter);
-//   }
-//   counter++;
-// } while (counter <= 1000);
-
-// console.log('for');
+// argsCount();
+// argsCount(1);
+// argsCount(2, 5, 8, 6);
+// argsCount('string', 2);
+// argsCount(2);
+// argsCount(2, 3, 5);
 
 
-// for (let counter = age; counter <= 1000; counter+25) {
-//   if (counter % age === 0) {
-//     console.log('Numbers - ' + counter);
-//   }
-// }
+const list = [2, 4, 6, 7, 9, 0, 10];
 
-// function areaCircle (radius) {
-//   if (isNaN(+radius)) {
-//     return 'radius is not a number';
-//   }
-//   return Math.PI * Math.pow(radius, 2);
-// }
-
-// console.log(areaCircle('ghjgh'));
-// console.log(areaCircle(6));
-
-// function sumFunction (from=0, to=10) { // es 6
-//   let sum = 0;
-//   if (from < to) {
-//     for(let counter = from; counter <= to; counter++ ) {
-//       // sum = sum + counter;
-//       sum += counter;
-//     }
-//   } 
-//   return sum;
-// }
-// console.log(sumFunction(0));
-
-
-console.log('List');
-const awasomeList = ['хліб', 'сир', 'молоко', 'Яйця', 'Апельсини'];
-
-function firtsUpper(row) {
-  // const firtsSymbol = row[0];
-  const firtsSymbol = row[0].toUpperCase();
-  row.substr(1);
-  return firtsSymbol + row.substr(1);
-}
-
-function lengthRow(rew) {
-  return 'Length of row - ' + rew.length;
-}
-
-// console.log(firtsUpper('хліб'));
-// console.log(firtsUpper('молоко'));
-// console.log(lengthRow('молоко'));
-
-function createList(list) {
-  for (let i = 0; i < list.length; i++) {
-    let correctCounter = i + 1;
-    console.log(correctCounter + '. ' + firtsUpper(list[i]) + lengthRow(list[i]));
+function cutArray(arr, from, to) {
+  if((isNaN(from) && isNaN(to)) || to < from || to > arr.length) {
+    return 'Error!';
+  } else if (arguments.length >= 3 ) {
+      let newArray = [];
+      let counter = 0;
+      for(let i = from; i <= to; i++) {
+        newArray[counter] = arr[i];
+        counter++;
+      }
+      return newArray;
+  } else {
+      return arr[from];
   }
 }
 
-createList(awasomeList);
+// cutArray(list);
+console.log(cutArray(list));
+console.log(cutArray(list, 2, 5));
+console.log(cutArray(list, 2, 5, 4));
+console.log(cutArray(list, 2));
+
+console.log(cutArray(list, 6, 5));
 
 
 
+const sum = function(from, to) {
+  if(from === to) {
+    return to;
+  } else {
+    return from + sum(from + 1, to);
+  }
+}
 
+console.log(sum(1, 5));
 
+// const secondSum = function(from, to) {
+//   if(from === to) {
+//     return from;
+//   } else {
+//     return to + secondSum(from, to - 1);
+//   }
+// }
+
+// console.log(secondSum(1, 5));
